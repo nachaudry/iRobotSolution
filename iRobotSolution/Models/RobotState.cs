@@ -2,24 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace iRobotSolution
+namespace iRobotSolution.Models
 {
-    public class Position
+    public class RobotState
     {
         public Coordinate Coordinate { get; private set; }
         public Orientation Orientation { get; set; }
+        public bool isDead { get; set; }
 
-        public Position(int x, int y)
+        public RobotState(int x, int y)
         {
             Coordinate = new Coordinate(x, y);
         }
-    }
-    
-    public enum Orientation
-    {
-        E,
-        W,
-        N,
-        S
     }
 }

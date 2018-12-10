@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace iRobotSolution
+namespace iRobotSolution.Models
 {
     public class Coordinate
     {
@@ -13,10 +13,10 @@ namespace iRobotSolution
         {
             X = x;
             Y = y;
-        }
+        } 
 
         public override bool Equals(object obj)
-        {
+        { 
             if (obj == null)
                 return false;
 

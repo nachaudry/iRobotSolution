@@ -1,4 +1,5 @@
 ﻿using System;
+using iRobotSolution.Models;
 
 namespace iRobotSolution
 {
@@ -9,19 +10,28 @@ namespace iRobotSolution
             Console.WriteLine("Hello Robot!");
             try
             {
-                Board b = new Board(5, 3);
+                MarsWorld mWorld = new MarsWorld(5, 3);
 
                 //ideally read a file for inputs, OK for now
-                b.ProcessRobot(1, 1, Orientation.E, "RFRFRFRF");
-                b.ProcessRobot(3, 2, Orientation.N, "FRRFLLFFRRFLL");
-                b.ProcessRobot(0, 3, Orientation.W, "LLFFFLFLFL"); 
-                
-
+                Print(mWorld.ProcessRobot(1, 1, Orientation.E, "RFRFRFRF"));
+                Print(mWorld.ProcessRobot(3, 2, Orientation.N, "FRRFLLFFRRFLL"));
+                Print(mWorld.ProcessRobot(0, 3, Orientation.W, "LLFFFLFLFL"));  
             }
-            catch { }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
 
             Console.ReadLine();
-
         }
+
+        private static void Print(RobotState rs)
+        {
+            Console.Write($"{rs.Coordinate.X}{rs.Coordinate.Y}{rs.Orientation.ToString()}");
+            if (rs.isDead)
+                Console.WriteLine(" LOST");
+            else
+                Console.WriteLine();
+        }
+
     }
 }
